@@ -1,0 +1,36 @@
+---
+title: "individual2"
+author: "Tyler Kruzan"
+date: "2/5/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+##Lab 2
+```{r, echo=FALSE}
+choco <- read.csv("https://xdaiisu.github.io/ds202materials/hwlabs/choco.csv")
+head(choco)
+```
+
+1. How are ratings distributed? Draw a histogram of ratings and describe it. Don’t forget to mention outliers, if there are any.
+```{r}
+hist(choco$Rating, main ="Distribution of Chocolate Ratings", xlab = "Rating (1-5)")
+``` 
+
+As can see can see the majority of the ratings are in between 2.5 & 3.5. Below is a boxplot of the ratings, which exemplifies the outliers which are a rating of 5.0 and below around 2.25
+```{r}
+summary(choco$Rating)
+boxplot(choco$Rating, ylab= "Rating", main= "Chocolate Ratings Boxplot")
+```
+
+2. Do ratings depend on the cacao percentage of a chocolate bar?
+Below is a graph comparing the chocolate ratings and their respecive cocoa percentages. From the graph you can see the outliers of ratings & cocoa percentages and interperet the correlation between the two.
+
+```{r}
+plot(choco$Rating, choco$Cocoa.Pct, main="Chocolate Ratings vs. Cocoa %", xlab = "Chocolate Rating", ylab = "Cocoa %")
+```
+
+For the most part, the chocolates with a cocoa % between 50%-90% there isn't a strong corellation with Rating. When you see outlier ratings the only chocolate with a 5 star rating had a cocoa % of about 70% and the poorly rated chocolates varied from 70% to 100% cocoa.
