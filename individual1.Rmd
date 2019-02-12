@@ -1,0 +1,35 @@
+---
+title: "individual1"
+author: "Sai Gugulothu"
+date: "02/05/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r,echo=FALSE}
+choco <- read.csv("https://xdaiisu.github.io/ds202materials/hwlabs/choco.csv")
+```
+
+# Labs 2 Questions
+```{r}
+ hist(choco$Rating, main = "Histogram of Choco Ratings", xlab="Rating", col="yellow")
+```
+
+#QUESTION 1: 
+In this histogram, you can see that most of the people rated 3 or above. This graph is left-skewed but it looks a lot like a bell curve. We can also deduce that there are very few 1 and 5 stars. To view any outliers, I will be creating a box plot. As you can see the box plot below, there some outliers as you can see below. The dots indicate outliers. 
+
+
+```{r}
+boxplot(choco$Rating, ylab="Ratings")
+```
+
+#QUESTION 2: 
+To answer this question I made plot that would distribute the different types of chocolates. From this distribution you can deduce that there isn't a correlation between the ratings and the percentage of coco that is in the product. For example, in the graph you can see that the different types of candy can have a range of chocolate contant in it that didnt effect its ratings. Looking at a three star rating, the percentage of coco in the chocolate ranges from around 55% to 100%. Likewise to all of the different ratings you can see a big range of chocolate percentage. 
+
+
+```{r}
+plot(choco$Rating, choco$Cocoa.Pct, main = "Correlation between Rating and Coco %", xlab = "Rating", ylab = "Coco percentage")
+```
