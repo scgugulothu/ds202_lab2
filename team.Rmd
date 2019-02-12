@@ -1,0 +1,37 @@
+---
+title: "team"
+author: "Tyler Kruzan & Sai Gugulothu"
+date: "2/10/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Lab 2 - Team Collaboration
+#Question 1: What is the overall number of chocolate bars rated?
+```{r, echo=FALSE}
+choco <- read.csv("https://xdaiisu.github.io/ds202materials/hwlabs/choco.csv")
+tail(choco)
+```
+To answer question 1 we made the assumption that the number of entries would be the same as the number of rows in the data set (not including the title). So by examining the tail end of the dataset we found there to be 1852 different chocolate bars rated.
+
+#Question 2: How does the number of ratings depend on the year? 
+```{r, echo=FALSE}
+years <- choco$Review.Date
+years06 <-sum(years =='2006')
+years07 <-sum(years =='2007')
+years08 <-sum(years =='2008')
+years09 <-sum(years =='2009')
+years10 <-sum(years =='2010')
+years11 <-sum(years =='2011')
+years12 <-sum(years =='2012')
+years13 <-sum(years =='2013')
+?barplot
+years_vector <-c(years06, years07, years08, years09, years10, years11, years12, years13)
+names(years_vector) <- c('2006','2007','2008','2009','2010','2011','2012','2013')
+barplot(years_vector,main = '# of Chocolate Reviews by Year', xlab = 'Year of Review', ylab = '# of Reviews')
+```
+
+To answer this question we sorted the dataset by the review date, then get the sum of the number of reviews in each year, named them accordingly, & presented it in a bar chart as seen above. You can see that there was steady growth in the number of reviews per year except for in two years of decline that occured in 2010 & 2013.
