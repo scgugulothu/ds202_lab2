@@ -28,10 +28,43 @@ years10 <-sum(years =='2010')
 years11 <-sum(years =='2011')
 years12 <-sum(years =='2012')
 years13 <-sum(years =='2013')
-?barplot
 years_vector <-c(years06, years07, years08, years09, years10, years11, years12, years13)
 names(years_vector) <- c('2006','2007','2008','2009','2010','2011','2012','2013')
 barplot(years_vector,main = '# of Chocolate Reviews by Year', xlab = 'Year of Review', ylab = '# of Reviews')
 ```
 
 To answer this question we sorted the dataset by the review date, then get the sum of the number of reviews in each year, named them accordingly, & presented it in a bar chart as seen above. You can see that there was steady growth in the number of reviews per year except for in two years of decline that occured in 2010 & 2013.
+
+#Question 3: How do ratings compare across different company locations? Focus on the three locations with the most ratings. 
+
+```{r}
+head(choco)
+
+usa <- choco[choco$Company.Location == "U.S.A.",]
+france <- choco[choco$Company.Location == "France",]
+canada <- choco[choco$Company.Location == "Canada",]
+boxplot(usa$Rating, france$Rating, canada$Rating, xlab = "USA                    FRANCE                       CANADA", ylab = "Ratings" )  
+
+
+```
+
+For this question we created a box plots for the different countries to look at the range of ratings given. As you can see the median from each country is about the same. The chocolate from France tend to get higher ratings compared to USA and Canada. We concluded that statement by looking at the wiskers portion of the box plot. The ratings for USA and Canada differ due to the fact that Canada had a bigger range from the median to the third quartile which means the chocolates from Canada usually got higher ratings than USA ratings. 
+
+
+#Question 4 and 5: Is there a correlation between choco percentage in the top locations? Did a particular country have a standard of choco contant? 
+
+
+
+
+```{r}
+usa <- choco[choco$Company.Location == "U.S.A.",]
+france <- choco[choco$Company.Location == "France",]
+canada <- choco[choco$Company.Location == "Canada",]
+
+boxplot(usa$Cocoa.Pct,france$Cocoa.Pct,canada$Cocoa.Pct,xlab = "USA                    FRANCE                       CANADA", ylab = "Choco Percentage")
+
+```
+
+For this question we created another boxplot to compare the chocolate percentages so we can determine if there is a range of chocolate used in the candy. From the graph, you can see that the chocolate percentage us usually around 70%. We can also see that there is no standard of chocolate percentage used since the range is between around 60 and 100 in all of the top countries.   
+
+
